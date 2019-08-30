@@ -12,7 +12,7 @@ class App extends React.Component {
     let chart = am4core.create("chartdiv", am4charts.XYChart);
 
 // Add data
-chart.dataSource.url = "https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_ETH&depth=50";
+chart.dataSource.url = "https://poloniex.com/public?command=returnOrderBook&currencyPair=USDT_BTC&depth=50";
 chart.dataSource.reloadFrequency = 30000;
 chart.dataSource.adapter.add("parsedData", function(data) {
   
@@ -114,19 +114,6 @@ series2.fill = series2.stroke;
 series2.fillOpacity = 0.1;
 series2.tooltipText = "Ask: [bold]{categoryX}[/]\nTotal volume: [bold]{valueY}[/]\nVolume: [bold]{asksvolume}[/]"
 
-let series3 = chart.series.push(new am4charts.ColumnSeries());
-series3.dataFields.categoryX = "value";
-series3.dataFields.valueY = "bidsvolume";
-series3.strokeWidth = 0;
-series3.fill = am4core.color("#000");
-series3.fillOpacity = 0.2;
-
-let series4 = chart.series.push(new am4charts.ColumnSeries());
-series4.dataFields.categoryX = "value";
-series4.dataFields.valueY = "asksvolume";
-series4.strokeWidth = 0;
-series4.fill = am4core.color("#000");
-series4.fillOpacity = 0.2;
 
 // Add cursor
 chart.cursor = new am4charts.XYCursor();
